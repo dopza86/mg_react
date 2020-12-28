@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Input from "../../../Components/Input";
 import Button from "../../../Components/Button";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -23,7 +24,7 @@ const StateChanger = styled(Box)`
   padding: 20px 0px;
 `;
 
-const Link = styled.span`
+const LinkWrapper = styled.span`
   color: ${(props) => props.theme.blueColor};
   cursor: pointer;
 `;
@@ -50,10 +51,18 @@ export default ({ username, password, handleSubmit }) => (
   <Wrapper>
     <Form>
       <form onSubmit={handleSubmit}>
-        <Input placeholder={"username"} {...username} />
-        <Input placeholder={"password"} {...password} type="password" />
-        <Button text={"Log in"} />
+        <Input placeholder={"아이디"} {...username} />
+        <Input placeholder={"비밀번호"} {...password} type="password" />
+        <Button text={"로그인"} />
       </form>
     </Form>
+    <StateChanger>
+      <>
+        계정이 없으신가요?{" "}
+        <LinkWrapper>
+          <Link to="/signup">가입하기</Link>
+        </LinkWrapper>
+      </>
+    </StateChanger>
   </Wrapper>
 );

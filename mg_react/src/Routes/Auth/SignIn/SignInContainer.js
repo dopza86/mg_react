@@ -19,7 +19,6 @@ export default () => {
   };
 
   const handleSubmit = () => {
-    console.log(password.value);
     dispatch(
       userLogin({
         username: username.value,
