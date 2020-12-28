@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
-import SignIn from "../Routes/Auth/SignIn";
-import SignUp from "../Routes/Auth/SignUp";
+import Auth from "../Routes/Auth";
+
 import Feed from "../Routes/Feed";
 import Explore from "../Routes/Explore";
 import Search from "../Routes/Search";
@@ -19,8 +19,7 @@ const LoggedInRoutes = () => (
 
 const LoggedOutRoutes = () => (
   <Switch>
-    <Route exact path="/" component={SignIn} />
-    <Route exact path="/signup" component={SignUp} />
+    <Route exact path="/" component={Auth} />
   </Switch>
 );
 
