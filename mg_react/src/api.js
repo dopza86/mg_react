@@ -17,4 +17,9 @@ const callApi = async (method, path, data, jwt) => {
 export default {
   createAccount: (form) => callApi("post", "/users/", form),
   login: (form) => callApi("post", "/rest-auth/login/", form),
+  isMe: (pk) => callApi("get", `/users/${pk}`, pk),
+  myFollow: (form, token) =>
+    callApi("get", "/follow_relation/my_follow/", null, token, form),
+  posts: (page = 1, token) =>
+    callApi("get", `/posts/?page=${page}`, null, token),
 };

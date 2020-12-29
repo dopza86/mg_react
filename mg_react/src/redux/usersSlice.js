@@ -17,10 +17,13 @@ const userSlice = createSlice({
       state.isLoggedIn = false;
       state.token = null;
     },
+    me(state, action) {
+      state.user = action.payload.user;
+    },
   },
 });
 
-export const { logIn, logOut } = userSlice.actions;
+export const { logIn, logOut, me } = userSlice.actions;
 
 export const userLogin = (form) => async (dispatch) => {
   try {
@@ -30,12 +33,24 @@ export const userLogin = (form) => async (dispatch) => {
         user: { pk },
       },
     } = await api.login(form);
-    console.log(token, pk);
+
     if (pk && token) {
       dispatch(logIn({ token, pk }));
     }
   } catch {
     alert("아이디와 비밀번호를 확인해주세요");
+  }
+};
+
+export const getMe = () => async (dispatch, getState) => {
+  const {
+    usersReducer: { pk },
+  } = getState();
+  try {
+    const { data } = await api.isMe(pk);
+    dispatch(me({ user: data }));
+  } catch (e) {
+    console.warn(e);
   }
 };
 

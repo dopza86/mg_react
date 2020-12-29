@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
-
+import Header from "./Header";
 import Routes from "./Routes";
 
 const Wrapper = styled.div`
@@ -23,6 +23,7 @@ export default () => {
       <GlobalStyles />
       <Router>
         <>
+          <Header />
           <Wrapper>
             <Routes isLoggedIn={isLoggedIn} />
           </Wrapper>

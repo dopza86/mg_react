@@ -30,7 +30,7 @@ export default () => {
         username: username.value,
         password: password.value,
       });
-      console.log(status);
+
       if (status === 201) {
         alert("가입을 축하드립니다 로그인 해주세요");
         setTimeout(() => setAction("logIn"), 2000);
