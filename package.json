@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-swipe": "^6.0.4",
+    "slick-carousel": "^1.8.1",
+    "swipe-js-iso": "^2.1.5"
+  }
+}

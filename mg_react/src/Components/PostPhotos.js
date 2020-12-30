@@ -26,25 +26,19 @@ const Photo = styled.div`
 
 const PostPhotos = ({ photos }) => {
   const [currentItem, setCurrentItem] = useState(0);
+
   const slide = () => {
     const totalPhotos = photos.length;
     if (currentItem === totalPhotos - 1) {
-      setTimeout(() => setCurrentItem(0), 3000);
+      setCurrentItem(0);
     } else {
-      setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+      setCurrentItem(currentItem + 1);
     }
   };
-  useEffect(() => {
-    slide();
-  }, [currentItem]);
+  // useEffect(() => {
+  //   slide();
+  // }, [currentItem]);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
   return (
     <PhotosContainer>
       {photos.map((photo, index) => (
@@ -52,6 +46,7 @@ const PostPhotos = ({ photos }) => {
           key={photo.id}
           src={photo.file}
           showing={index === currentItem}
+          onClick={() => slide()}
         />
       ))}
     </PhotosContainer>

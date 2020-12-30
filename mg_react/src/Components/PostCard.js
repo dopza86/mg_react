@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import TextareaAutosize from "react-autosize-textarea";
+
 import FatText from "./FatText";
 import Avatar from "./Avatar";
 import { HeartFull, HeartEmpty, Comment as CommentIcon } from "./Icons";
@@ -98,37 +99,41 @@ export default ({
   location,
   avatar,
   created,
-}) => (
-  <Post>
-    <Header>
-      <Avatar size="sm" url={avatar} />
-      <UserColumn>
-        <Link to={`/${user.username}`}>
-          <FatText text={user.username} />
-        </Link>
-        <Location>{location}</Location>
-      </UserColumn>
-    </Header>
-    <PostPhotos photos={photos} />
-    <Meta>
-      <Buttons>
-        <Button>
-          <HeartFull />
-        </Button>
-        <Button>
-          <CommentIcon />
-        </Button>
-      </Buttons>
-      <FatText />
-      <Caption>
-        <FatText text={user.username} />
-        {caption}
-      </Caption>
-      <Comment>
+}) => {
+  return (
+    <Post>
+      <Header>
+        <Avatar size="sm" url={avatar} />
+        <UserColumn>
+          <Link to={`/${user.username}`}>
+            <FatText text={user.username} />
+          </Link>
+          <Location>{location}</Location>
+        </UserColumn>
+      </Header>
+
+      <PostPhotos photos={photos} />
+
+      <Meta>
+        <Buttons>
+          <Button>
+            <HeartFull />
+          </Button>
+          <Button>
+            <CommentIcon />
+          </Button>
+        </Buttons>
         <FatText />
-      </Comment>
-      <Timestamp>{created}</Timestamp>
-      <Textarea />
-    </Meta>
-  </Post>
-);
+        <Caption>
+          <FatText text={user.username} />
+          {caption}
+        </Caption>
+        <Comment>
+          <FatText />
+        </Comment>
+        <Timestamp>{created}</Timestamp>
+        <Textarea />
+      </Meta>
+    </Post>
+  );
+};
